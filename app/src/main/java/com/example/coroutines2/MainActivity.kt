@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        // 1. Define the scope in which we want our coroutine to start
+        /*        // 1. Define the scope in which we want our coroutine to start
         GlobalScope.launch(Dispatchers.IO) {
         // 2. define what our coroutine should do
             // this will only pause the current cortn and not block the main thread
@@ -30,23 +30,49 @@ class MainActivity : AppCompatActivity() {
 //                tv.dummy.text = answer
                 Log.d(TAG, "Setting text in  thread ${Thread.currentThread().name}")
             }
-        }
+        }*/
 
-        // we can start a crtn in the main thread
+        /*// we can start a crtn in the main thread
+        Log.d(TAG, "Before run blocking ${Thread.currentThread().name}")
         runBlocking {
+        Log.d(TAG, "Runblocking Started")
+            delay(5000L)
+            Log.d(TAG, "Runblocking Ended")
 
         }
-        Log.d(TAG, "Hello from thread ${Thread.currentThread().name}")
+        Log.d(TAG, "After Runblocking")
+    }*/
+/*        //JOBS
+        // default for complex calculations
+        // this launch function returns a job
+        val job = GlobalScope.launch(Dispatchers.Default) {
+            repeat(5) {
+                Log.d(TAG, "Coroutine is still working...")
+                delay(1000)
+
+            }
+        }
+        // we can wait for this job to finish with job.join()
+        runBlocking {
+//            job.join()
+            delay(2000)
+            job.cancel()
+            Log.d(TAG, "Main thread is continuing...")
+
+
+        }*/
     }
 
-    // creatine our own suspend function that simulates a network call
-    suspend fun doNetworkCall(): String {
-        delay(3000)
-        return "This is the answer"
-    }
+    /*   // creatine our own suspend function that simulates a network call
+       suspend fun doNetworkCall(): String {
+           delay(3000)
+           return "This is the answer"
+       }
 
-    suspend fun doNetworkCall2(): String {
-        delay(3000)
-        return "This is the answer 2"
-    }
+       suspend fun doNetworkCall2(): String {
+           delay(3000)
+           return "This is the answer 2"
+       }*/
+
+
 }

@@ -47,3 +47,13 @@
   - RUNBLOCKING
 - The difference with GlobalScope.launch(){} is that run blocking will actually block the main thread
 - if we use delay in runblicking it will delay our ui updates
+
+## Jobs
+- whenever we launch a new crtine the launch function it actually returns a job
+- which we can save in a variable
+1. job.join():
+  - suspend function that helps us wait for this job to finish 
+  - this will block our main thread until crtn is finished
+2. job.cancel():
+
+## Async Await
